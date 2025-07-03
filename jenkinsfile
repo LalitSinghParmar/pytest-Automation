@@ -23,12 +23,11 @@ pipeline {
         }
         stage('Run pytest') {
             steps {
-                sh 'source $VENV_DIR/bin/activate && pytest --junitxml-result.xml --html=report.html'
+                sh 'source $VENV_DIR/bin/activate && pytest --html=report.html'
             }
         }
         stage('Publish HTML report') {
             steps{
-                junit 'result.xml'
                 publishHTML(target: [
                     reportDir: '.', 
                     reportFiles: 'report.html',
