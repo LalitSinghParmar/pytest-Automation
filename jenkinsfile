@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Dependency installation') {
             steps {
-                sh 'source $VENV_DIR/bin/activate && pip install -r requirement.txt'
+                sh 'source $VENV_DIR/bin/activate && pip install -r requirements.txt'
             }
         }
         stage('Run pytest') {
