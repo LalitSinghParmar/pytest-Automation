@@ -18,12 +18,12 @@ pipeline {
         }
         stage('Dependency installation') {
             steps {
-                sh 'pip install -r requirement.txt'
+                sh 'source $VENV_DIR/bin/activate && pip install -r requirement.txt'
             }
         }
         stage('Run pytest') {
             steps {
-                sh 'pytest --html=report.html'
+                sh 'source $VENV_DIR/bin/activate && pytest --html=report.html'
             }
         }
         stage('Publish HTML report') {
